@@ -3,27 +3,26 @@
         <h2>{{userName}}</h2>
     </div>
     <div class="">
-        <img href="{{userImg}}" alt="{{userName}}"></img>
+        <img href="{{userImg}}" alt="{{userName}}">
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
             <img src="..." alt="...">
             <div class="caption">
-                <h3>Add a new Board</h3>
-                <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <h3>Add a new Board/Pin</h3>
+                <p><a ng-href="#" class="btn btn-primary" role="button">Add</a>
             </div>
             </div>
         </div>
-        <div ng-repeat="board in boardsList">
+        <div ng-repeat="item in itemList">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                <img src="..." alt="...">
+                <img src="{{item.url}}" alt="{{item.name}}">
                 <div class="caption">
-                    <h3>{{board.name}}</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <h3>{{item.name}}</h3>
+                    <a ng-href="#!/boardpins/{{item.Id}}"><img href="{{item.img}}"></a>
+                    <p><a  class="btn btn-primary" role="button">Edit</a> <a href="#" class="btn btn-default" role="button">Delete</a></p>
                 </div>
             </div>
         </div>
