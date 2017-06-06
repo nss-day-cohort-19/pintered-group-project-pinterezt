@@ -10,7 +10,7 @@ app.config(function($routeProvider){
 	})
 	.when('/profile', {
 		templateUrl: 'partials/profile-view.html',
-		controller: ''
+		controller: 'ProfileCtrl'
 	})
 	.when('/pindetails', {
 		templateUrl: 'partials/large-view.html'

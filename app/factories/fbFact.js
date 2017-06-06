@@ -58,7 +58,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
 
     const getFBBoards = (userID) => {
         return $q((resolve, reject) => {
-            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
+            $http.get(`${FBCreds.databaseURL}/boards.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
                     let itemCollection = itemObj.data;
                     console.log("getFBBoards", itemCollection);
@@ -71,7 +71,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
     };
     const getFBUser = (userID) => {
         return $q((resolve, reject) => {
-            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
+            $http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
                     let itemCollection = itemObj.data;
                     console.log("getFBBoards", itemCollection);
