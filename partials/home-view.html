@@ -1,6 +1,11 @@
-<div class="row">
-    <div class="col-xs-6 col-md-3 col-lg-3">
-        <button ng-click="saveLargeView()" type="button" class="btn btn-danger text-right">Save</button>
-        <img src="">
+<div class="container">
+    <div class="row margin-top">
+        <div ng-repeat="item in dataFromFb">
+            <div class="col-md-3 thumbnail thumbnail-home">
+                <button ng-click="saveLargeView()" type="button" class="btn btn-danger home-btn"><span class="glyphicon glyphicon-pushpin"></span></button>
+                <img class="home-img" src="{{item.url}}">
+            </div>
+        </div>
     </div>
 </div>
+

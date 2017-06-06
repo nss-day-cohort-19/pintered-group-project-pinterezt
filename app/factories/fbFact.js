@@ -61,7 +61,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
 
     const getFBBoards = (userID) => {
         return $q((resolve, reject) => {
-            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
+            $http.get(`${FBCreds.databaseURL}/boards.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
                     let itemCollection = itemObj.data;
                     console.log("getFBBoards", itemCollection);
@@ -74,7 +74,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
     };
     const getFBUser = (userID) => {
         return $q((resolve, reject) => {
-            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
+            $http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
                     let itemCollection = itemObj.data;
                     console.log("getFBBoards", itemCollection);
@@ -85,12 +85,25 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
+    const addBoard = (userID, newBoard) => {
+        let boardObj = JSON.stringify(newBoard);
+        return $q((resolve, reject) => {
+            $http.post(`${FBCreds.databaseURL}/boards.json`, boardObj)
+        .then((obj) => {
+            resolve(obj);
+        })
+        .catch((error) => {
+            reject(error);
+            });
+        });
+    };
     return {
         saveLargeImage,
         getAllPins,
         getPin,
         changePin,
         getFBBoards,
-        getFBUser
+        getFBUser,
+        addBoard
     };
 });

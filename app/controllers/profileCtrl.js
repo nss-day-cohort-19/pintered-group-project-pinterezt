@@ -3,11 +3,15 @@
 app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFactory) {
 
     let getFBUser = () => {
-        DataFactory.getFBUser()
+        let user = AuthFactory.getUser();
+        DataFactory.getFBUser(user)
         .then((userInfo)=> {
-            $scope.userName = userInfo.name;
-            $scope.uid = userInfo.uid;
-            $scope.userImg = userInfo.img;
+            console.log(userInfo);
+            for (let i in userInfo) {
+                $scope.userName = userInfo[i].name;
+                $scope.uid = userInfo[i].uid;
+                $scope.userImg = userInfo[i].url;
+            }
         });
     };
 
@@ -16,9 +20,6 @@ app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFacto
         DataFactory.getFBBoards(user)
         .then((boardsListObj) => {
             $scope.itemList = boardsListObj;
-            for (let i in $scope.itemList) {
-                $scope.itemList.id = i.boardId;
-            }
         });
     };
     getFBUser();
