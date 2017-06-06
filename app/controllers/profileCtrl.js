@@ -21,5 +21,7 @@ app.controller('ProfileCtrl', function($scope, $location, FBFactory, AuthFactory
             }
         });
     };
+    getFBUser();
+    getFBBoards();
 
 });

@@ -21,4 +21,7 @@ app.controller('BoardCtrl', function($scope, $location, $routeParams, FBFactory,
         });
     };
 
+    getFBUser();
+    getFBBoardPins();
+
 });
