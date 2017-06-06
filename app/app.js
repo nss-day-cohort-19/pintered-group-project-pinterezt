@@ -6,7 +6,7 @@ app.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
 		templateUrl: 'partials/home-view.html',
-		controller: ''
+		controller: 'HomeCtrl'
 	})
 	.when('/profile', {
 		templateUrl: 'partials/profile-view.html',

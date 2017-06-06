@@ -85,6 +85,8 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
     return {
         saveLargeImage,
         getAllPins,
+        getPin,
+        changePin,
         getFBBoards,
         getFBUser
     };
