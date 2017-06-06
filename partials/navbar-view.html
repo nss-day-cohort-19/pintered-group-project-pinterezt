@@ -9,6 +9,8 @@
 	  		</div>
 	  		<a class="nav" href="#!/explore"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
 			<a class="nav" href="#!/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></a>
+			<a ng-href="#!/" ng-show="!isLoggedIn" ng-controller="AuthCtrl" ng-click="login()">Login</a>
+			<a ng-show="isLoggedIn" ng-href="#!/" ng-controller="AuthCtrl" ng-click="logout()">Logout</a>
 		</div>
 	</div>
 </nav>
