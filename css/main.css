@@ -1,3 +1,21 @@
+.nav {
+  display: inline-block;
+  margin-top: 10px; }
 
+.searchBar {
+  width: 50%;
+  margin-right: 10%; }
+
+.navbar-header {
+  width: 100%;
+  margin: 0; }
+
+.navbar-brand {
+  margin-right: 10%; }
+
+.icon {
+  margin-right: 5%;
+  margin-left: 5%;
+  font-size: 16pt; }
 
 /*# sourceMappingURL=main.css.map */
