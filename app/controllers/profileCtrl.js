@@ -1,10 +1,10 @@
 'use strict';
 
-app.controller('ProfileCtrl', function($scope, $location, DataFactory) {
+app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFactory) {
 
     let getFBUser = () => {
-        // let user = AuthFactory.getUser();
-        DataFactory.getFBUser("google:matthewaugsburger")
+        let user = AuthFactory.getUser();
+        DataFactory.getFBUser(user)
         .then((userInfo)=> {
             console.log(userInfo);
             for (let i in userInfo) {
@@ -16,8 +16,8 @@ app.controller('ProfileCtrl', function($scope, $location, DataFactory) {
     };
 
     let getFBBoards = () => {
-        // let user = AuthFactory.getUser();
-        DataFactory.getFBBoards("google:matthewaugsburger")
+        let user = AuthFactory.getUser();
+        DataFactory.getFBBoards(user)
         .then((boardsListObj) => {
             $scope.itemList = boardsListObj;
         });

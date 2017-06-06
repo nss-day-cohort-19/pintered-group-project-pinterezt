@@ -84,16 +84,16 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
     };
     const addBoard = (userID, newBoard) => {
         let boardObj = JSON.stringify(newBoard);
-        return $q((resolve, reject) {
+        return $q((resolve, reject) => {
             $http.post(`${FBCreds.databaseURL}/boards.json`, boardObj)
-        })
         .then((obj) => {
             resolve(obj);
         })
         .catch((error) => {
             reject(error);
+            });
         });
-    }
+    };
     return {
         saveLargeImage,
         getAllPins,
