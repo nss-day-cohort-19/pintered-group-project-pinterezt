@@ -3,10 +3,14 @@
 app.controller('BoardCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory) {
 
     let getFBUser = () => {
-        DataFactory.getFBUser()
+        let user = AuthFactory.getUser();
+        DataFactory.getFBUser(user)
         .then((userInfo)=> {
-            $scope.userName = userInfo.name;
-            $scope.userImg = userInfo.img;
+            for (let i in userInfo) {
+                $scope.userName = userInfo[i].name;
+                $scope.uid = userInfo[i].uid;
+                $scope.userImg = userInfo[i].url;
+            }
         });
     };
 
