@@ -30,9 +30,9 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
-    const getFBBoards = (user) => {
+    const getFBBoards = (userID) => {
         return $q((resolve, reject) => {
-            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${user}"`)
+            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
                     let itemCollection = itemObj.data;
                     console.log("getFBBoards", itemCollection);
@@ -43,4 +43,23 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
+    const getFBUser = (userID) => {
+        return $q((resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
+                .then((itemObj) => {
+                    let itemCollection = itemObj.data;
+                    console.log("getFBBoards", itemCollection);
+                    resolve(itemCollection);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
+  return {
+    saveLargeImage,
+    getAllPins,
+    getFBBoards,
+    getFBUser
+  };
 });
