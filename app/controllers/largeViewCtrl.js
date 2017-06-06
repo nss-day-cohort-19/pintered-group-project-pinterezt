@@ -1,7 +1,7 @@
 "use strict";
-app.controller('LargeViewCtrl', function($scope, $location, $routeParams, FBFactory) {
+app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory) {
     $scope.saveLargeView = function() {
-    FBFactory.saveLargeImage($routeParams.id)
+    DataFactory.saveLargeImage($routeParams.id)
     .then( (response) => {
     	$location.path("");
     });

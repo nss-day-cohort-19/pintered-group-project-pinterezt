@@ -32,9 +32,12 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
     };
 
     const getPin = (pinId) => {
+
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/pins/${pinId}.json`)
                 .then((itemObj) => {
+                    itemObj.data.id = pinId;
+                    console.log('itemObj', itemObj);
                     resolve(itemObj.data);
                 })
                 .catch((error) => {
