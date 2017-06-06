@@ -16,6 +16,61 @@
 
 </div>
 
+<!--Modal Trigger-->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addPinModal">Add A Pin</button>-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="addPinModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add A Pin</h4>
+        </div>
+        <div class="modal-body">
+          <p>Title:</p><input type="text">
+          <p>URL:</p><input type="type">
+          <p>Which Board</p>
+          <div class="btn-group" >
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" ng-repeat="board in boards">
+              <li><a href="#">Action{{board.id}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addBoardModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add A Board</h4>
+        </div>
+        <div class="modal-body">
+          <p>Title:</p><input type="text">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 
 
   <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
