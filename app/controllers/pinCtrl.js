@@ -1,13 +1,13 @@
 'use strict';
 
-app.controller('PinCtrl', function($scope, $routeParams, FBFactory, $location) {
+app.controller('PinCtrl', function($scope, $routeParams, DataFactory, $location) {
 
     $scope.img = {
         pinned: '',
 
     };
 
-    FBFactory.getImg($routeParams.taskId)
+    DataFactory.getPin($routeParams.pinId)
     .then((stuff) => {
         $scope.itemList = stuff;
         $scope.itemList.id = $routeParams.id;
@@ -15,7 +15,7 @@ app.controller('PinCtrl', function($scope, $routeParams, FBFactory, $location) {
 
     $scope.submitPin = function() {
 
-        FBFactory.pinCurrentImg($routeParams.id, $scope.itemList)
+        DataFactory.changePin($routeParams.id, $scope.itemList)
             .then((data) => {
                 $location.path("/");
             });

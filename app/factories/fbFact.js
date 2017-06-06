@@ -30,6 +30,32 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
+
+    const getPin = (pinId) => {
+        return $q((resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/pins/${pinId}.json`)
+                .then((itemObj) => {
+                    resolve(itemObj.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
+
+    const changePin = (pinId, pinnedObj) => {
+        return $q((resolve, reject) => {
+            let newObj = JSON.stringify(pinnedObj);
+            $http.patch(`${FBCreds.databaseURL}/pins/${pinId}.json`, newObj)
+                .then((itemObj) => {
+                    resolve(itemObj);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
+
     const getFBBoards = (userID) => {
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/items.json?orderBy="uid"&equalTo="${userID}"`)
@@ -56,10 +82,10 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
-  return {
-    saveLargeImage,
-    getAllPins,
-    getFBBoards,
-    getFBUser
-  };
+    return {
+        saveLargeImage,
+        getAllPins,
+        getFBBoards,
+        getFBUser
+    };
 });
