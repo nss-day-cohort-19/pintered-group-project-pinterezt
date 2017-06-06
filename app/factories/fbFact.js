@@ -97,6 +97,22 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
             });
         });
     };
+    const addUser = (userObj) => {
+        let user = {
+            name: `${userObj.displayName}`,
+            uid: `${userObj.uid}`,
+            url: `${userObj.photoURL}`
+        };
+       return $q((resolve, reject) => {
+           $http.post(`${FBCreds.databaseURL}/users.json`, user)
+           .then((sucessObj) => {
+            resolve(sucessObj);
+           })
+           .catch((error) => {
+               reject(error);
+           });
+       });
+    };
     return {
         saveLargeImage,
         getAllPins,
@@ -104,6 +120,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
         changePin,
         getFBBoards,
         getFBUser,
-        addBoard
+        addBoard,
+        addUser
     };
 });
