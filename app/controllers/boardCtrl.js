@@ -1,9 +1,9 @@
 'use strict';
 
-app.controller('BoardCtrl', function($scope, $location, $routeParams, FBFactory, AuthFactory) {
+app.controller('BoardCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory) {
 
     let getFBUser = () => {
-        FBFactory.getFBUser()
+        DataFactory.getFBUser()
         .then((userInfo)=> {
             $scope.userName = userInfo.name;
             $scope.userImg = userInfo.img;
@@ -12,7 +12,7 @@ app.controller('BoardCtrl', function($scope, $location, $routeParams, FBFactory,
 
     let getFBBoardPins = () => {
         
-        FBFactory.getFBBoardPins($routeParams.itemId)
+        DataFactory.getFBBoardPins($routeParams.itemId)
         .then((pinsListObj) => {
             $scope.itemList = pinsListObj;
             for (let i in $scope.itemList) {
