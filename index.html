@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ImageApp">
 
 <head>
     <title>Pinterest</title>
@@ -7,30 +7,40 @@
 </head>
 
 <body>
-    <div class="container">
-    </div>
-    <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="./lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./lib/node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" src="./lib/node_modules/angular-route/angular-route.min.js"></script>
-    <script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
-    <script type="text/javascript" src="./app/app.js"></script>
-    <script type="text/javascript" src="./app/values/fb-creds.js"></script>
-    <!--Factories-->
-    <script type="text/javascript" src="./app/factories/authFact.js"></script>
-    <script type="text/javascript" src="./app/factories/fbFact.js"></script>
-    <script type="text/javascript" src="./app/factories/imageFact.js"></script>
-    <script type="text/javascript" src="./app/factories/searchFact.js"></script>
-    <!--Controllers-->
-    <script type="text/javascript" src="./app/controllers/authCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/boardCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/explorerCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/homeCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/likeCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/navCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/pinCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/profileCtrl.js"></script>
-    <script type="text/javascript" src="./app/controllers/largeViewCtrl.js"></script>
+
+<div ng-include="'partials/navbar-view.html'">
+  
+</div>
+<div ng-view>
+  
+</div>
+
+
+
+  <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="./lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./lib/node_modules/angular/angular.min.js"></script>
+  <script type="text/javascript" src="./lib/node_modules/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
+
+  <script type="text/javascript" src="./app/app.js"></script>
+  <script type="text/javascript" src="./app/values/fb-creds.js"></script>
+  <!--Factories-->
+  <script type="text/javascript" src="./app/factories/authFact.js"></script>
+  <script type="text/javascript" src="./app/factories/fbFact.js"></script>
+  <script type="text/javascript" src="./app/factories/imageFact.js"></script>
+  <script type="text/javascript" src="./app/factories/searchFact.js"></script>
+  <!--Controllers-->
+  <script type="text/javascript" src="./app/controllers/authCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/boardCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/explorerCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/homeCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/likeCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/navCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/pinCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/profileCtrl.js"></script>
+
+
 </body>
 
 </html>
