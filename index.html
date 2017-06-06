@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ImageApp">
 
 <head>
     <title>Pinterest</title>
@@ -8,6 +8,12 @@
 
 <body>
 
+<div ng-include="'partials/navbar-view.html'">
+
+</div>
+<div ng-view>
+
+</div>
 
 
 
@@ -18,7 +24,7 @@
   <script type="text/javascript" src="./lib/node_modules/firebase/firebase.js"></script>
 
   <script type="text/javascript" src="./app/app.js"></script>
-  <script type="text/javascript" src="./app/values/fb-creds.js"></script>
+  <script type="text/javascript" src="./app/value/FBCreds.js"></script>
   <!--Factories-->
   <script type="text/javascript" src="./app/factories/authFact.js"></script>
   <script type="text/javascript" src="./app/factories/fbFact.js"></script>
@@ -33,6 +39,8 @@
   <script type="text/javascript" src="./app/controllers/navCtrl.js"></script>
   <script type="text/javascript" src="./app/controllers/pinCtrl.js"></script>
   <script type="text/javascript" src="./app/controllers/profileCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/largeViewCtrl.js"></script>
+
 
 </body>
 
