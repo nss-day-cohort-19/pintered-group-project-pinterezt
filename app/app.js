@@ -1,16 +1,16 @@
 "use strict";
 
-var app = angular.module("doctorsApp", ['ngRoute']);
+var app = angular.module("ImageApp", ['ngRoute']);
 
 app.config(function($routeProvider){
 	$routeProvider.
 	when('/', {
-		templateUrl: 'partials/doctors-view.html',
-		controller: 'DoctorsCtrl'
+		templateUrl: '',
+		controller: ''
 	}).
-	when('/patients', {
-		templateUrl: 'partials/patients-view.html',
-		controller: 'PatientsCtrl'
+	when('/', {
+		templateUrl: '',
+		controller: ''
 	}).
 	otherwise('/');
 });
