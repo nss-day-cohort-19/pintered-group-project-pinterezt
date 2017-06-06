@@ -1,9 +1,9 @@
 'use strict';
 
-app.controller('ProfileCtrl', function($scope, $location, FBFactory, AuthFactory) {
+app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFactory) {
 
     let getFBUser = () => {
-        FBFactory.getFBUser()
+        DataFactory.getFBUser()
         .then((userInfo)=> {
             $scope.userName = userInfo.name;
             $scope.uid = userInfo.uid;
@@ -13,7 +13,7 @@ app.controller('ProfileCtrl', function($scope, $location, FBFactory, AuthFactory
 
     let getFBBoards = () => {
         let user = AuthFactory.getUser();
-        FBFactory.getFBBoards(user)
+        DataFactory.getFBBoards(user)
         .then((boardsListObj) => {
             $scope.itemList = boardsListObj;
             for (let i in $scope.itemList) {
