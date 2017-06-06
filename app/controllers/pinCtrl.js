@@ -7,8 +7,10 @@ app.controller('PinCtrl', function($scope, $routeParams, DataFactory, $location)
 
     };
 
-    DataFactory.getPin($routeParams.pinId)
+    DataFactory.getPin($routeParams.id)
     .then((stuff) => {
+        console.log('stuff', stuff);
+        console.log('$routeParams', $routeParams);
         $scope.itemList = stuff;
         $scope.itemList.id = $routeParams.id;
     });

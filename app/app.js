@@ -12,11 +12,21 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/profile-view.html',
 		controller: 'ProfileCtrl'
 	})
+	.when('/board', {
+		templateUrl: 'partials/board-view.html',
+		controller: 'BoardCtrl'
+	})
+	.when('/pins/:id', {
+		templateUrl: 'partials/pin-view.html',
+		controller: 'PinCtrl'
+	})
 	.when('/pindetails', {
-		templateUrl: 'partials/large-view.html'
+		templateUrl: 'partials/large-view.html',
+		controller: 'LargeViewCtrl'
 	})
 	.when('/explore', {
-		templateUrl: 'partials/explore-view.html'
+		templateUrl: 'partials/explore-view.html',
+		controller: 'ExplorerCtrl'
 	})
 	.otherwise('/');
 });
