@@ -31,5 +31,5 @@ app.factory("AuthFactory", function($q) {
 		return firebase.auth().signOut();
 	};
 
-	return {getUser, authWithProvider, isAuthenticated};
+	return {getUser, authWithProvider, isAuthenticated, logoutUser};
 });
