@@ -1,24 +1,31 @@
 <div class="container margin-top">
-    <h1 class="col-md-offset-5 profile-name">{{userName}}</h1>
-        <img class="col-md-offset-9 text-right profile-img img-circle" src="{{userImg}}" alt="{{userName}}">
-    <a ng-href="#!/profile"><button type="button" class="btn btn-default">Boards</button></a>
-    <a ng-href="#!/pinview"><button type="button" class="btn btn-default">Pins</button></a>
+    <h1 class="col-md-offset-3 profile-name">{{userName}}</h1>
+
+    <img class="col-md-offset-9 text-right profile-img img-circle" src="{{userImg}}" alt="{{userName}}">
+    <div class="col-md-offset-4 switch-btn">
+        <a ng-href="#!/profile">
+            <button type="button" class="btn btn-default">Boards</button>
+        </a>
+        <a ng-href="#!/pinview">
+            <button type="button" class="btn btn-default">Pins</button>
+        </a>
+    </div>
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-            <div class="caption">
-                <h3>Add a new Board</h3>
-                <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#addBoardModal">Add</a>
-            </div>
+                <div class="caption">
+                    <h3>Add a new Board</h3>
+                    <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#addBoardModal">Add</a>
+                </div>
             </div>
         </div>
         <div ng-repeat="item in itemList">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                <div class="caption">
-                    <h3>{{item.name}}</h3>
-                    <p><a  class="btn btn-primary" role="button">Edit</a> <a href="#" class="btn btn-default" role="button">Delete</a><a ng-href="#!/board/{{item.id}}" class="btn btn-default" role="button">View</a></p>
-                </div>
+                    <div class="caption">
+                        <h3>{{item.name}}</h3>
+                        <p><a class="btn btn-primary" role="button">Edit</a> <a href="#" class="btn btn-default" role="button">Delete</a><a ng-href="#!/board/{{item.id}}" class="btn btn-default" role="button">View</a></p>
+                    </div>
                 </div>
             </div>
         </div>
