@@ -31,14 +31,13 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         });
     };
 
-    const getPin = (pinId) => {
+    const getPin = (userID) => {
 
         return $q((resolve, reject) => {
-            $http.get(`${FBCreds.databaseURL}/pins/${pinId}.json`)
+            $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
-                    itemObj.data.id = pinId;
-                    console.log('itemObj', itemObj);
-                    resolve(itemObj.data);
+                    let itemCollection = itemObj.data;
+                    resolve(itemCollection);
                 })
                 .catch((error) => {
                     reject(error);
