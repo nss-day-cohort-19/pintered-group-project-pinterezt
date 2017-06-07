@@ -4,9 +4,7 @@ app.factory("AuthFactory", function($q) {
 	
 	let currentUser = null;
 
-	let getUser = function() {
-		return currentUser;
-	};
+
 
 	let provider = new firebase.auth.GoogleAuthProvider();
 
@@ -30,6 +28,10 @@ app.factory("AuthFactory", function($q) {
 	let logoutUser = function() {
 		return firebase.auth().signOut();
 	};
+    let getUser = function() {
+        console.log('currentUser Here yo', currentUser);
+		return currentUser;
+	};
 
-	return {getUser, authWithProvider, isAuthenticated, logoutUser};
+	return {authWithProvider, isAuthenticated, logoutUser, getUser};
 });

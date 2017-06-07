@@ -24,7 +24,7 @@
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content" ng-controller="">
+      <div class="modal-content" ng-controller="AddPinCtrl">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add A Pin</h4>
@@ -38,7 +38,7 @@
               Action <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" ng-repeat="board in boards">
-              <li><a href="#">Action{{board.id}}</a></li>
+              <li><a>{{board.name}}</a></li>
             </ul>
           </div>
         </div>
@@ -55,16 +55,16 @@
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content" ng-controller="">
+      <div class="modal-content" ng-controller="AddBoardCtrl">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add A Board</h4>
         </div>
         <div class="modal-body">
-          <p>Title:</p><input type="text">
+          <p>Title:</p><input type="text" ng-model="board.name">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-default" ng-click="addNewBoard()" data-dismiss="modal">Add</button>
         </div>
       </div>
       
@@ -96,6 +96,8 @@
   <script type="text/javascript" src="./app/controllers/pinCtrl.js"></script>
   <script type="text/javascript" src="./app/controllers/profileCtrl.js"></script>
   <script type="text/javascript" src="./app/controllers/largeViewCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/AddBoardCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/AddPinCtrl.js"></script>
 
 
 </body>

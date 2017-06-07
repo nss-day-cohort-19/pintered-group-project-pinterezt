@@ -85,7 +85,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
-    const addBoard = (userID, newBoard) => {
+    const addBoard = (newBoard) => {
         let boardObj = JSON.stringify(newBoard);
         return $q((resolve, reject) => {
             $http.post(`${FBCreds.databaseURL}/boards.json`, boardObj)
@@ -103,11 +103,24 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
             uid: `${userObj.uid}`,
             url: `${userObj.photoURL}`
         };
+        user = JSON.stringify(user);
        return $q((resolve, reject) => {
-           $http.post(`${FBCreds.databaseURL}/users.json`, user)
-           .then((sucessObj) => {
-            resolve(sucessObj);
-           })
+
+        $http.get(`${FBCreds.databaseURL}/users.json`)
+            .then((usersObj) => {
+            console.log('userObj', usersObj);
+                for (let i in usersObj) {
+                    if (i.uid === usersObj.uid) {
+                        console.log('user validity and shit');
+                        break;
+                    } else {
+                        $http.post(`${FBCreds.databaseURL}/users.json`, user)
+                        .then((obj) => {
+                            resolve(obj);
+                        });
+                    }
+                }
+            })
            .catch((error) => {
                reject(error);
            });
