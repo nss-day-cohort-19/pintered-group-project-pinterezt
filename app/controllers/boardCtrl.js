@@ -2,6 +2,14 @@
 
 app.controller('BoardCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory) {
 
+    let getBoardName = () => {
+        DataFactory.getBoard($routeParams.id)
+        .then((boardObj) => {
+            console.log('check this out', boardObj);
+            $scope.boardName = boardObj.data.name;
+
+        });
+    };
 
     let getFBBoardPins = () => {
         console.log('route id', $routeParams.id);
@@ -15,5 +23,6 @@ app.controller('BoardCtrl', function($scope, $location, $routeParams, DataFactor
     };
 
     getFBBoardPins();
+    getBoardName();
 
 });
