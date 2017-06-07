@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row margin-top">
         <div class="col-md-8 text-right">
-            <button ng-click="saveLargeView()" type="button" class="btn btn-danger large-btn" ng-show="isUser"><span class="glyphicon glyphicon-pushpin"></span>Save</button>
+        //ISSUE BUTTON
+            <button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn"  ng-show="isUser" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span>Save</button>
         </div>
         <div class="col-md-12">
             <img class="img-responsive center-block large-image" src="{{currentImage}}">

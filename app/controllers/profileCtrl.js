@@ -19,7 +19,15 @@ app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFacto
         let user = AuthFactory.getUser();
         DataFactory.getFBBoards(user)
         .then((boardsListObj) => {
+            console.log('boardslistobj', boardsListObj);
+            let keyHolder = Object.keys(boardsListObj);
+            let j = 0;
+            for (let i in boardsListObj) {
+                boardsListObj[i].id = keyHolder[j];
+                j++;
+            }
             $scope.itemList = boardsListObj;
+               
         });
     };
     getFBUser();

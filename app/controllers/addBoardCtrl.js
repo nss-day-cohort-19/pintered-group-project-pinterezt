@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("AddBoardCtrl", function($scope, AuthFactory, $window, $location, DataFactory) {
+app.controller("AddBoardCtrl", function($scope, AuthFactory, $route, DataFactory) {
 
     $scope.board = {
         name: ""
@@ -12,6 +12,7 @@ app.controller("AddBoardCtrl", function($scope, AuthFactory, $window, $location,
         DataFactory.addBoard($scope.board)
         .then((addedObj) => {
             console.log('success');
+            $route.reload();
         });
     };
 

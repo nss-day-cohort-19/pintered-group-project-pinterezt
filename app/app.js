@@ -32,10 +32,11 @@ app.config(function($routeProvider){
 		controller: 'LargeViewCtrl',
 		resolve: {isAuth}
 	})
-	.when('/board', {
+	.when('/board/:id', {
 		templateUrl: 'partials/board-view.html',
-		controller: 'ProfileCtrl',
+		controller: 'BoardCtrl'
 		resolve: {isAuth}
+
 	})
 	.when('/pinview', {
 		templateUrl: 'partials/pin-view.html',
