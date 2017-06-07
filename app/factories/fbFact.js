@@ -105,27 +105,13 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         };
         user = JSON.stringify(user);
        return $q((resolve, reject) => {
-
-        $http.get(`${FBCreds.databaseURL}/users.json`)
-            .then((usersObj) => {
-                let holder = usersObj.data;
-            console.log('userObj', usersObj);
-                for (let item in holder) {
-                    console.log('check here', holder[item].uid, userObj.uid);
-                    if (holder[item].uid === userObj.uid) {
-                        console.log('user validity and shit');
-                        break;
-                    } else {
-                        $http.post(`${FBCreds.databaseURL}/users.json`, user)
-                        .then((obj) => {
-                            resolve(obj);
-                        });
-                    }
-                }
-            })
-           .catch((error) => {
-               reject(error);
-           });
+        $http.put(`${FBCreds.databaseURL}/users/${userObj.uid}.json`, user)
+        .then((obj) => {
+            resolve(obj);
+        })
+        .catch((error) => {
+            reject(error);
+        });
        });
     };
     const addNewPin = (pinObj) => {
