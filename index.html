@@ -32,8 +32,8 @@
           <p>URL:</p><input type="text" ng-model="url">
           <div class="form-group">
             <label for="sel1">Save Pin:</label>
-            <select class="form-control" id="sel1">
-              <option class="boardSelect" value="{{board.id}}" ng-repeat="board in boards">{{board.name}}</option>
+            <select class="form-control boardSelect" id="sel1">
+              <option value="{{board.id}}" ng-repeat="board in boards">{{board.name}}</option>
             </select>
           </div>
         </div>
