@@ -127,6 +127,24 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         });
 
     };
+        const getFBBoardPins = (boardID) => {
+        let pins = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="boardId"&equalTo="${boardID}"`)
+                .then((itemObj) => {
+                    let itemCollection = itemObj.data;
+                    console.log("getBoardPins", itemCollection);
+                    Object.keys(itemCollection).forEach((key) => {
+                        itemCollection[key].id = key;
+                        pins.push(itemCollection[key]);
+                    });
+                    resolve(pins);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
     return {
         saveLargeImage,
         getAllPins,
@@ -136,6 +154,7 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         getFBUser,
         addBoard,
         addUser,
-        addNewPin
+        addNewPin,
+        getFBBoardPins
     };
 });

@@ -16,9 +16,9 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/large-view.html',
 		controller: 'LargeViewCtrl'
 	})
-	.when('/board', {
+	.when('/board/:id', {
 		templateUrl: 'partials/board-view.html',
-		controller: 'ProfileCtrl'
+		controller: 'BoardCtrl'
 	})
 	.when('/pins/:id', {
 		templateUrl: 'partials/pin-view.html',
