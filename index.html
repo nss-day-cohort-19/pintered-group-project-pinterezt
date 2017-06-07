@@ -20,18 +20,18 @@
   <!-- Modal -->
   <div class="modal fade" id="addPinModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content" ng-controller="AddPinCtrl" >
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add A Pin</h4>
+          <h4 class="modal-title">Save Pin</h4>
         </div>
         <div class="modal-body" ng-mouseenter="getBoardData()">
           <p>Title:</p><input type="text" ng-model="name">
           <p>URL:</p><input type="text" ng-model="url">
           <div class="form-group">
-            <label for="sel1">Add to Board:</label>
+            <label for="sel1">Save Pin:</label>
             <select class="form-control" id="sel1">
               <option class="boardSelect" value="{{board.id}}" ng-repeat="board in boards">{{board.name}}</option>
             </select>
@@ -41,14 +41,14 @@
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="pushPin()">Add</button>
         </div>
       </div>
-      
+
     </div>
   </div>
 
   <!-- Modal -->
   <div class="modal fade" id="addBoardModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content" ng-controller="AddBoardCtrl">
         <div class="modal-header">
@@ -62,7 +62,7 @@
           <button type="button" class="btn btn-default" ng-click="addNewBoard()" data-dismiss="modal">Add</button>
         </div>
       </div>
-      
+
     </div>
   </div>
 
