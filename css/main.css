@@ -41,7 +41,6 @@
 
 .large-image {
   width: 430px;
-  height: 600px;
   border-radius: 10px; }
 
 .thumbnail-home {
@@ -66,5 +65,8 @@
   color: #555;
   font-weight: 900;
   font-size: 3em; }
+
+.switch-btn {
+  margin-bottom: 2em; }
 
 /*# sourceMappingURL=main.css.map */

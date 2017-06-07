@@ -34,7 +34,7 @@ app.config(function($routeProvider){
 	})
 	.when('/board/:id', {
 		templateUrl: 'partials/board-view.html',
-		controller: 'BoardCtrl'
+		controller: 'BoardCtrl',
 		resolve: {isAuth}
 
 	})
