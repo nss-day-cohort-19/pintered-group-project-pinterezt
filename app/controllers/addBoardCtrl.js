@@ -12,6 +12,7 @@ app.controller("AddBoardCtrl", function($scope, AuthFactory, $route, DataFactory
         DataFactory.addBoard($scope.board)
         .then((addedObj) => {
             console.log('success');
+            $scope.board.name = '';
             $route.reload();
         });
     };
