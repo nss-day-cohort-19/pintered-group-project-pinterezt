@@ -5,7 +5,8 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
     let pinUrl = "";
 
     $(document).on('click', '.btn', (event) => {
-        console.log("check this event", event);
+        console.log("check this event", event.currentTarget.value);
+            $scope.name = '';
             pinUrl = event.currentTarget.value;
 
     });
@@ -28,7 +29,7 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
             name: $scope.name,
             uid: AuthFactory.getUser(),
             url: $scope.url,
-            boardId: $('.boardSelect').val()
+            boardId: $('.boardSelect option:selected').val()
         };
         console.log('pinObj', pinObj);
         DataFactory.addNewPin(pinObj)
