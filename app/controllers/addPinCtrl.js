@@ -27,10 +27,10 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
             boardId: $('.boardSelect').val()
         };
         console.log('pinObj', pinObj);
-        // DataFactory.addNewPin(pinObj)
-        // .then((date) => {
-        //     console.log('yeah yeah yeah');
-        // });
+        DataFactory.addNewPin(pinObj)
+        .then((date) => {
+            console.log('yeah yeah yeah');
+        });
     };
 
 });
