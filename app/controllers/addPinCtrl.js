@@ -9,12 +9,6 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
 
     });
 
-    if(AuthFactory.isAuthenticated()){
-        $(".addBtn").prop('disabled', false);
-    }else{
-        $(".addBtn").prop('disabled', true);
-    }
-
     $scope.getBoardData = () => {
         DataFactory.getFBBoards(AuthFactory.getUser())
         .then((boardsObj) => {

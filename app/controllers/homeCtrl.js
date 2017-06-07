@@ -4,12 +4,14 @@ app.controller('HomeCtrl', function($scope, $location, $routeParams, DataFactory
     .then( (dataFromFb) => {
     	console.log('stuff from fb', dataFromFb);
     	$scope.dataFromFb = dataFromFb;
+    	AuthFactory.isAuthenticated()
+    	.then(function(result) {
+    		console.log(result);
+    		$scope.isUser = result;
+    		return result;
+    	});
+
     });
 
-    if(AuthFactory.isAuthenticated()){
-        $(".addBtn").prop('disabled', false);
-    }else{
-        $(".addBtn").prop('disabled', true);
-    }
 
 });

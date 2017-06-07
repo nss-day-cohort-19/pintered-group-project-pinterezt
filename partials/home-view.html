@@ -2,7 +2,7 @@
     <div class="row margin-top">
         <div ng-repeat="item in dataFromFb">
             <div class="col-md-3 thumbnail thumbnail-home">
-                <button data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn addBtn"><span class="glyphicon glyphicon-pushpin"></span></button>
+                <button data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn addBtn" ng-show="isUser"><span class="glyphicon glyphicon-pushpin"></span></button>
                 <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" src="{{item.url}}" ></a>
 
             </div>
