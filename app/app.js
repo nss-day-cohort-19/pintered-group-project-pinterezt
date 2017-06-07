@@ -37,10 +37,14 @@ app.config(function($routeProvider){
 		controller: 'ProfileCtrl',
 		resolve: {isAuth}
 	})
-	.when('/pins/:id', {
+	.when('/pinview', {
 		templateUrl: 'partials/pin-view.html',
-		controller: 'ProfileCtrl'
+		controller: 'PinCtrl'
 	})
+	// .when('/pins/:id', {
+	// 	templateUrl: 'partials/pin-view.html',
+	// 	controller: 'ProfileCtrl'
+	// })
 	.when('/pindetails', {
 		templateUrl: 'partials/large-view.html',
 		controller: 'LargeViewCtrl'

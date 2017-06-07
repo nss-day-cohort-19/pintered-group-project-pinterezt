@@ -1,27 +1,29 @@
 'use strict';
 
-app.controller('PinCtrl', function($scope, $routeParams, DataFactory, $location) {
+app.controller('PinCtrl', function($scope, $routeParams, DataFactory, $location, AuthFactory) {
 
-    $scope.img = {
-        pinned: '',
-
-    };
-
-    DataFactory.getPin($routeParams.id)
-    .then((stuff) => {
-        console.log('stuff', stuff);
-        console.log('$routeParams', $routeParams);
-        $scope.itemList = stuff;
-        $scope.itemList.id = $routeParams.id;
-    });
-
-    $scope.submitPin = function() {
-
-        DataFactory.changePin($routeParams.id, $scope.itemList)
-            .then((data) => {
-                $location.path("/");
+    let getFBUser = () => {
+        let user = AuthFactory.getUser();
+        DataFactory.getFBUser(user)
+            .then((userInfo) => {
+                console.log(userInfo);
+                for (let i in userInfo) {
+                    $scope.userName = userInfo[i].name;
+                    $scope.uid = userInfo[i].uid;
+                    $scope.userImg = userInfo[i].url;
+                }
             });
-
     };
+
+    let getPin = () => {
+        let user = AuthFactory.getUser();
+        DataFactory.getPin(user)
+            .then((stuff) => {
+                $scope.itemList = stuff;
+            });
+    };
+
+    getFBUser();
+    getPin();
 
 });
