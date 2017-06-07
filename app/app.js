@@ -12,6 +12,10 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/profile-view.html',
 		controller: 'ProfileCtrl'
 	})
+	.when('/largeView/:id', {
+		templateUrl: 'partials/large-view.html',
+		controller: 'LargeViewCtrl'
+	})
 	.when('/board', {
 		templateUrl: 'partials/board-view.html',
 		controller: 'BoardCtrl'
