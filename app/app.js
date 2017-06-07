@@ -7,9 +7,9 @@ let isAuth = (AuthFactory) => {
 		AuthFactory.isAuthenticated()
 		.then((userExists)=>{
 			if(userExists){
-				resolve();
+				resolve(true);
 			} else {
-				reject();
+				resolve(false);
 			}
 		});
 	});
