@@ -5,7 +5,7 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
     let pinUrl = "";
 
     $(document).on('click', '.btn', (event) => {
-        console.log("check this event", event.currentTarget.value);
+        console.log("check this event", event);
             pinUrl = event.currentTarget.value;
 
     });
