@@ -7,6 +7,7 @@ app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFa
 		for (var i = 0; i < allPins.length; i++) {
 			if(allPins[i].id == $routeParams.id) {
 				$scope.currentImage = allPins[i].url;
+				$scope.imageName = allPins[i].name;
 			}
 		}
 		// console.log('currentImage', $scope.currentImage);
