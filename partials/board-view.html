@@ -1,31 +1,26 @@
 <div class="container">
     <div class="page-header">
-        <!--<h2>{{userName}}</h2>-->
+        <h2>{{boardName}}</h2>
     </div>
-    <div class="">
-        <!--<img href="{{userImg}}" alt="{{userName}}">-->
-    </div>
+
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
             <div class="caption">
                 <h3>Add a new Pin</h3>
-                <p><a ng-href="#" class="btn btn-primary" role="button">Add</a>
+                <p><a data-toggle="modal" data-target="#addPinModal" class="btn btn-primary" role="button">Add</a>
             </div>
             </div>
         </div>
-        <div ng-repeat="item in itemList">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                <!--<img src="{{item.url}}" alt="{{item.name}}">-->
-                <div class="caption">
-                    <!--<h3>{{item.name}}</h3>
-                    <a ng-href="#!/boardpins/{{item.Id}}"><img href="{{item.img}}"></a>-->
-                    <p><a  class="btn btn-primary" role="button">Edit</a> <a href="#" class="btn btn-default" role="button">Delete</a></p>
+        <div class="container">
+            <div class="row margin-top">
+                <div ng-repeat="item in itemList">
+                    <div class="col-md-3 thumbnail thumbnail-home">
+                        <button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
+                        <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="{{item.url}}"></a>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
-
 </div>
