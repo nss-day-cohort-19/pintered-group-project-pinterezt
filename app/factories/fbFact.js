@@ -126,6 +126,18 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
            });
        });
     };
+    const addNewPin = (pinObj) => {
+        return $q((resolve, reject) => {
+            $http.post(`${FBCreds.databaseURL}/pins.json`, pinObj)
+            .then((successObj) => {
+                resolve(successObj);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+
+    };
     return {
         saveLargeImage,
         getAllPins,
@@ -134,6 +146,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
         getFBBoards,
         getFBUser,
         addBoard,
-        addUser
+        addUser,
+        addNewPin
     };
 });

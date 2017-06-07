@@ -29,7 +29,6 @@ app.factory("AuthFactory", function($q) {
 		return firebase.auth().signOut();
 	};
     let getUser = function() {
-        console.log('currentUser Here yo', currentUser);
 		return currentUser;
 	};
 
