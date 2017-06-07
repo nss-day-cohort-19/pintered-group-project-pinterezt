@@ -1,5 +1,5 @@
 "use strict";
-app.factory("DataFactory", function($q, $http, FBCreds) {
+app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
     const saveLargeImage = (imageID, editedObj) => {
         return $q((resolve, reject) => {
             let newObj = JSON.stringify(editedObj);
@@ -108,9 +108,11 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
 
         $http.get(`${FBCreds.databaseURL}/users.json`)
             .then((usersObj) => {
+                let holder = usersObj.data;
             console.log('userObj', usersObj);
-                for (let i in usersObj) {
-                    if (i.uid === usersObj.uid) {
+                for (let item in holder) {
+                    console.log('check here', holder[item].uid, userObj.uid);
+                    if (holder[item].uid === userObj.uid) {
                         console.log('user validity and shit');
                         break;
                     } else {
@@ -128,7 +130,8 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
     };
     const addNewPin = (pinObj) => {
         return $q((resolve, reject) => {
-            $http.post(`${FBCreds.databaseURL}/pins.json`, pinObj)
+            let hold = JSON.stringify(pinObj);
+            $http.post(`${FBCreds.databaseURL}/pins.json`, hold)
             .then((successObj) => {
                 resolve(successObj);
             })
