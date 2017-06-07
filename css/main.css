@@ -13,6 +13,9 @@
 .navbar-brand {
   margin-right: 10%; }
 
+.navbar-img {
+  margin-top: -20px; }
+
 .icon {
   margin-right: 5%;
   margin-left: 5%;
@@ -32,8 +35,22 @@
   margin-left: 25px;
   margin-top: 20px; }
 
+.large-btn {
+  margin-bottom: 5px;
+  margin-right: -30px; }
+
+.large-image {
+  width: 430px;
+  height: 600px;
+  border-radius: 10px; }
+
 .thumbnail-home {
   width: 300px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  border-color: #FFF; }
+
+.thumbnail-home:hover {
+  color: #EFEFEF;
+  background-color: #EFEFEF; }
 
 /*# sourceMappingURL=main.css.map */
