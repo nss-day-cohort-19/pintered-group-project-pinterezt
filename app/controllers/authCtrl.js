@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("AuthCtrl", function($scope, AuthFactory, $window, $location) {
+app.controller("AuthCtrl", function($scope, AuthFactory, $window, $location, DataFactory) {
 
 	$scope.logout = () => {
 		AuthFactory.logoutUser()
@@ -18,7 +18,12 @@ app.controller("AuthCtrl", function($scope, AuthFactory, $window, $location) {
 	$scope.login = () => {
 		AuthFactory.authWithProvider()
 		.then(function(result) {
-			var user = result.user.uid;
+			// console.log('userObj', result);
+			DataFactory.addUser(result.user)
+			.then((success) =>{
+				let successObj = success;
+			});
+			var user = result.user.uid; //what's this for??
 			$location.path("#!/");
 
 		})

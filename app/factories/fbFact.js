@@ -85,7 +85,7 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
                 });
         });
     };
-    const addBoard = (userID, newBoard) => {
+    const addBoard = (newBoard) => {
         let boardObj = JSON.stringify(newBoard);
         return $q((resolve, reject) => {
             $http.post(`${FBCreds.databaseURL}/boards.json`, boardObj)
@@ -97,6 +97,47 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
             });
         });
     };
+    const addUser = (userObj) => {
+        let user = {
+            name: `${userObj.displayName}`,
+            uid: `${userObj.uid}`,
+            url: `${userObj.photoURL}`
+        };
+        user = JSON.stringify(user);
+       return $q((resolve, reject) => {
+
+        $http.get(`${FBCreds.databaseURL}/users.json`)
+            .then((usersObj) => {
+            console.log('userObj', usersObj);
+                for (let i in usersObj) {
+                    if (i.uid === usersObj.uid) {
+                        console.log('user validity and shit');
+                        break;
+                    } else {
+                        $http.post(`${FBCreds.databaseURL}/users.json`, user)
+                        .then((obj) => {
+                            resolve(obj);
+                        });
+                    }
+                }
+            })
+           .catch((error) => {
+               reject(error);
+           });
+       });
+    };
+    const addNewPin = (pinObj) => {
+        return $q((resolve, reject) => {
+            $http.post(`${FBCreds.databaseURL}/pins.json`, pinObj)
+            .then((successObj) => {
+                resolve(successObj);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+
+    };
     return {
         saveLargeImage,
         getAllPins,
@@ -104,6 +145,8 @@ app.factory("DataFactory", function($q, $http, FBCreds) {
         changePin,
         getFBBoards,
         getFBUser,
-        addBoard
+        addBoard,
+        addUser,
+        addNewPin
     };
 });

@@ -18,11 +18,11 @@ app.config(function($routeProvider){
 	})
 	.when('/board', {
 		templateUrl: 'partials/board-view.html',
-		controller: 'BoardCtrl'
+		controller: 'ProfileCtrl'
 	})
 	.when('/pins/:id', {
 		templateUrl: 'partials/pin-view.html',
-		controller: 'PinCtrl'
+		controller: 'ProfileCtrl'
 	})
 	.when('/pindetails', {
 		templateUrl: 'partials/large-view.html',

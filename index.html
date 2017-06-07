@@ -16,34 +16,29 @@
 
 </div>
 
-<!--Modal Trigger-->
-<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addPinModal">Add A Pin</button>-->
 
   <!-- Modal -->
   <div class="modal fade" id="addPinModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" ng-controller="AddPinCtrl" >
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add A Pin</h4>
         </div>
-        <div class="modal-body">
-          <p>Title:</p><input type="text">
-          <p>URL:</p><input type="type">
-          <p>Which Board</p>
-          <div class="btn-group" >
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Action <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" ng-repeat="board in boards">
-              <li><a href="#">Action{{board.id}}</a></li>
-            </ul>
+        <div class="modal-body" ng-mouseenter="getBoardData()">
+          <p>Title:</p><input type="text" ng-model="name">
+          <p>URL:</p><input type="text" ng-model="url">
+          <div class="form-group">
+            <label for="sel1">Add to Board:</label>
+            <select class="form-control" id="sel1">
+              <option class="boardSelect" value="{{board.id}}" ng-repeat="board in boards">{{board.name}}</option>
+            </select>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="pushPin()">Add</button>
         </div>
       </div>
       
@@ -55,16 +50,16 @@
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" ng-controller="AddBoardCtrl">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add A Board</h4>
         </div>
         <div class="modal-body">
-          <p>Title:</p><input type="text">
+          <p>Title:</p><input type="text" ng-model="board.name">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-default" ng-click="addNewBoard()" data-dismiss="modal">Add</button>
         </div>
       </div>
       
@@ -96,6 +91,8 @@
   <script type="text/javascript" src="./app/controllers/pinCtrl.js"></script>
   <script type="text/javascript" src="./app/controllers/profileCtrl.js"></script>
   <script type="text/javascript" src="./app/controllers/largeViewCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/AddBoardCtrl.js"></script>
+  <script type="text/javascript" src="./app/controllers/AddPinCtrl.js"></script>
 
 
 </body>
