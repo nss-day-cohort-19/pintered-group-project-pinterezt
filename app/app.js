@@ -2,6 +2,20 @@
 
 var app = angular.module("ImageApp", ['ngRoute']);
 
+let isAuth = (AuthFactory) => {
+	return new Promise((resolve, reject)=>{
+		AuthFactory.isAuthenticated()
+		.then((userExists)=>{
+			if(userExists){
+				resolve();
+			} else {
+				reject();
+			}
+		});
+	});
+};
+
+
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
@@ -10,15 +24,18 @@ app.config(function($routeProvider){
 	})
 	.when('/profile', {
 		templateUrl: 'partials/profile-view.html',
-		controller: 'ProfileCtrl'
+		controller: 'ProfileCtrl',
+		resolve: {isAuth}
 	})
 	.when('/largeView/:id', {
 		templateUrl: 'partials/large-view.html',
-		controller: 'LargeViewCtrl'
+		controller: 'LargeViewCtrl',
+		resolve: {isAuth}
 	})
 	.when('/board', {
 		templateUrl: 'partials/board-view.html',
-		controller: 'ProfileCtrl'
+		controller: 'ProfileCtrl',
+		resolve: {isAuth}
 	})
 	.when('/pins/:id', {
 		templateUrl: 'partials/pin-view.html',
@@ -28,10 +45,10 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/large-view.html',
 		controller: 'LargeViewCtrl'
 	})
-	.when('/explore', {
-		templateUrl: 'partials/explore-view.html',
-		controller: 'ExplorerCtrl'
-	})
+	// .when('/explore', {
+	// 	templateUrl: 'partials/explore-view.html',
+	// 	controller: 'ExplorerCtrl'
+	// })
 	.otherwise('/');
 });
 
