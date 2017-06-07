@@ -3,9 +3,12 @@
 app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, DataFactory) {
 
     let pinUrl = "";
+
     $(document).on('click', 'img', (event) => {
         pinUrl = $(event)[0].target.currentSrc;
+
     });
+
     $scope.getBoardData = () => {
         DataFactory.getFBBoards(AuthFactory.getUser())
         .then((boardsObj) => {

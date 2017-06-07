@@ -1,5 +1,5 @@
 "use strict";
-app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory) {
+app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory) {
 	// console.log('routeParams', $routeParams.id);
 	DataFactory.getAllPins()
 	.then((allPins)=> {
@@ -10,9 +10,15 @@ app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFa
 			}
 		}
 		// console.log('currentImage', $scope.currentImage);
-	});
-
-
+	})
+	.then(
+		AuthFactory.isAuthenticated()
+    	.then(function(result) {
+    		console.log(result);
+    		$scope.isUser = result;
+    		return result;
+    	})
+	);
     $scope.saveLargeView = function() {
     DataFactory.saveLargeImage($routeParams.id)
     .then( (response) => {
