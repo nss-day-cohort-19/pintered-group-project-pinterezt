@@ -144,6 +144,17 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
                 });
         });
     };
+    const getBoard = (boardId) => {
+        return $q((resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/boards/${boardId}.json`)
+            .then((boardObj) => {
+                resolve(boardObj);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+    };
     return {
         saveLargeImage,
         getAllPins,
@@ -154,6 +165,7 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         addBoard,
         addUser,
         addNewPin,
-        getFBBoardPins
+        getFBBoardPins,
+        getBoard
     };
 });
