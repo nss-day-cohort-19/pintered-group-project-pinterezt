@@ -1,5 +1,5 @@
 "use strict";
-app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory) {
+app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory, ImageFactory) {
 	// console.log('routeParams', $routeParams.id);
 	DataFactory.getAllPins()
 	.then((allPins)=> {
