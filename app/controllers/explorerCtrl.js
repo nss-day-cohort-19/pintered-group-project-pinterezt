@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFactory, AuthFactory) {
+app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFactory, AuthFactory, SearchTermData) {
     $scope.getImagesFlickr = function() {
     	console.log('clicked Flickr');
         ImageFactory.getRandomImages()
@@ -17,5 +17,8 @@ app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFa
 
             });
     };
+
     $scope.getImagesFlickr();
+
+    $scope.searchData = SearchTermData;
 });

@@ -5,6 +5,7 @@
     <title>Pinterest</title>
     <link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://s.pinimg.com/webapp/style/images/favicon-9f8f9adf.png"/>
 </head>
 
 <body>
@@ -27,9 +28,9 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Save Pin</h4>
         </div>
-        <div class="modal-body" ng-mouseenter="getBoardData()">
+        <div class="modal-body">
           <p>Title:</p><input type="text" ng-model="name">
-          <p>URL:</p><input type="text" ng-model="url">
+          <p>URL:</p><input type="text" ng-model="url" ng-click="getBoardData()">
           <div class="form-group">
             <label for="sel1">Save Pin:</label>
             <select class="form-control boardSelect" id="sel1">
@@ -38,7 +39,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="pushPin()">Add</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="pushPin()">Add</button>
         </div>
       </div>
 
@@ -59,7 +60,7 @@
           <p>Title:</p><input type="text" ng-model="board.name">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" ng-click="addNewBoard()" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-danger" ng-click="addNewBoard()" data-dismiss="modal">Add</button>
         </div>
       </div>
 
