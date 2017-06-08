@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFactory, AuthFactory, SearchTermData) {
+app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFactory, AuthFactory, DataFactory, SearchTermData) {
     $scope.getImagesFlickr = function() {
         console.log('clicked Flickr');
         ImageFactory.getRandomImages()
@@ -44,4 +44,34 @@ app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFa
         }
     });
 
+        $scope.getBoardData = () => {
+        DataFactory.getFBBoards(AuthFactory.getUser())
+        .then((boardsObj) => {
+            for (let i in boardsObj) {
+                boardsObj[i].id = i;
+            }
+
+        $scope.boards = boardsObj;
+        });
+    };
+
+    $scope.pushPin = () => {
+        let pinObj = {
+            name: $scope.pinName,
+            uid: AuthFactory.getUser(),
+            url: $scope.pinUrl,
+            boardId: $scope.board.id
+        };
+        console.log('pinObj', pinObj);
+        DataFactory.addNewPin(pinObj)
+        .then((date) => {
+            console.log('yeah yeah yeah');
+        });
+    };
+
+	$scope.setItemUrlToPinUrl = (url) => {
+		$scope.pinUrl = url;
+	};
+
+	$scope.getBoardData();
 });

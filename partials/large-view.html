@@ -3,10 +3,40 @@
     <h2 class="text-center">{{imageName}}</h2>
         <div class="col-md-8 text-right">
             <button type="button" class="btn btn-danger back-btn"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true">Back</span></button>
-            <button data-toggle="modal" data-target="#addPinModal" value="{{currentImage}}" ng-click="saveLargeView()" type="button" class="btn btn-danger large-btn"><span value="{{currentImage}}" class="glyphicon glyphicon-pushpin"></span>Pin</button>
+            <button ng-click="setItemUrlToPinUrl(currentImage)" data-toggle="modal" data-target="#addPinModal" value="{{currentImage}}" ng-click="saveLargeView()" type="button" class="btn btn-danger large-btn"><span value="{{currentImage}}" class="glyphicon glyphicon-pushpin"></span>Pin</button>
+
         </div>
         <div class="col-md-12">
             <img class="img-responsive center-block large-image" ng-src="{{currentImage}}">
         </div>
     </div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addPinModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Pin</h4>
+        </div>
+        <div class="modal-body" ng-mouseenter="getBoardData()">
+          <p>Title:</p><input type="text" ng-model="pinName">
+          <p>URL:</p><input type="text" ng-model="pinUrl">
+          <div class="form-group">
+            <label for="sel1">Save to Which Board:</label>
+            <select class="form-control boardSelect" id="sel1">
+              <option value="{{board.id}}" ng-repeat="board in boards">{{board.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="pushPin()">Add</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
