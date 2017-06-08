@@ -39,10 +39,23 @@ app.controller('LargeViewFlickr', function($scope, $location, $routeParams, Data
     	})
 	);
 
-    $scope.saveLargeView = function() {
-    DataFactory.saveLargeImage($routeParams.id)
-    .then( (response) => {
-    	$location.path("");
-    });
-  };
+	$scope.pushPin = () => {
+        let pinObj = {
+            name: $scope.pinName,
+            uid: AuthFactory.getUser(),
+            url: $scope.pinUrl,
+            boardId: $scope.board.id
+        };
+        console.log('pinObj', pinObj);
+        DataFactory.addNewPin(pinObj)
+        .then((date) => {
+            console.log('yeah yeah yeah');
+        });
+    };
+
+	$scope.setItemUrlToPinUrl = (url) => {
+		$scope.pinUrl = url;
+	};
+
+	$scope.getBoardData();
 });
