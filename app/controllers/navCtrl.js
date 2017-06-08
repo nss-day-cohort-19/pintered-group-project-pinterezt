@@ -1,10 +1,10 @@
 "use strict";
 
-app.controller('NavCtrl', function($scope, $window) {
-	  
+app.controller('NavCtrl', function($scope, $window, SearchTermData) {
+
 
   $scope.isLoggedIn = false;
-  //$scope.searchText = SearchTermData;
+  $scope.searchText = SearchTermData;
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
