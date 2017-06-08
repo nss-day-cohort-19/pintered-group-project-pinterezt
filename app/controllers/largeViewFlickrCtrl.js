@@ -44,5 +44,6 @@ app.controller('LargeViewFlickr', function($scope, $location, $routeParams, Data
     .then( (response) => {
     	$location.path("");
     });
+
   };
 });
