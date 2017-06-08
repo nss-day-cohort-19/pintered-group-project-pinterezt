@@ -32,12 +32,16 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
     };
 
     const getPin = (userID) => {
-
+        let pins = [];
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="uid"&equalTo="${userID}"`)
                 .then((itemObj) => {
                     let itemCollection = itemObj.data;
-                    resolve(itemCollection);
+                    Object.keys(itemCollection).forEach((key) => {
+                        itemCollection[key].id = key;
+                        pins.push(itemCollection[key]);
+                    });
+                    resolve(pins);
                 })
                 .catch((error) => {
                     reject(error);
@@ -155,6 +159,32 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
             });
         });
     };
+
+    const deleteBoard = (boardId) => {
+        return $q((resolve, reject) => {
+            $http.delete(`${FBCreds.databaseURL}/boards/${boardId}.json`)
+            .then((response) => {
+                resolve(response);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+    };
+
+    const deletePin = (pinId) => {
+        console.log('pinId', pinId);
+        return $q((resolve, reject) => {
+            $http.delete(`${FBCreds.databaseURL}/pins/${pinId}.json`)
+            .then((response) => {
+                resolve(response);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+    };
+
     return {
         saveLargeImage,
         getAllPins,
@@ -166,6 +196,8 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         addUser,
         addNewPin,
         getFBBoardPins,
-        getBoard
+        getBoard,
+        deleteBoard,
+        deletePin
     };
 });

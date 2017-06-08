@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, DataFactory) {
+app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, DataFactory, $route) {
 
     let pinUrl = "";
 
@@ -35,6 +35,7 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
         DataFactory.addNewPin(pinObj)
         .then((date) => {
             console.log('yeah yeah yeah');
+            $route.reload();
         });
     };
 
