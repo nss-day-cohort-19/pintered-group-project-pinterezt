@@ -1,5 +1,5 @@
 "use strict";
-app.controller('HomeCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory) {
+app.controller('HomeCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory, SearchTermData) {
     DataFactory.getAllPins()//this is just a random func name
     .then( (dataFromFb) => {
     	console.log('stuff from fb', dataFromFb);
@@ -12,6 +12,6 @@ app.controller('HomeCtrl', function($scope, $location, $routeParams, DataFactory
     	});
 
     });
-
+     $scope.searchData = SearchTermData;
 
 });
