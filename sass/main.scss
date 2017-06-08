@@ -46,6 +46,7 @@
 }
 
 
+
 .home-img {
     width: 250px;
     margin-top: 1em;
@@ -53,8 +54,9 @@
 }
 .home-btn {
     position: absolute;
-    margin-left: 25px;
-    margin-top: 20px;
+    margin-left: -5px;
+    margin-top: 5px;
+    padding: 1px 5px;
 }
 //THIS IS THE LARGE IMAGE VIEW PAGE
 .large-btn {
@@ -115,6 +117,7 @@
 
 body {
     // background-color: #f5efec;
+    font-family: 'Bree Serif', serif;
 }
 
 
@@ -222,3 +225,10 @@ body {
     border-radius: 10px;
 }
 
+.newCaption {
+    height: 150px;
+    background-color: #ccc7c5;
+    border-radius: 10px;
+    min-width: 150px;
+    margin: 10px 10px;
+}
