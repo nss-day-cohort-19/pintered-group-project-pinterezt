@@ -50,10 +50,15 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/large-view.html',
 		controller: 'LargeViewCtrl'
 	})
-	// .when('/explore', {
-	// 	templateUrl: 'partials/explore-view.html',
-	// 	controller: 'ExplorerCtrl'
-	// })
+	.when('/explore', {
+		templateUrl: 'partials/explore-view.html',
+		controller: 'ExplorerCtrl'
+	})
+	.when('/largeViewFlickr/:id', {
+		templateUrl: 'partials/largeViewFlickr.html',
+		controller: 'LargeViewFlickr',
+		resolve: {isAuth}
+	})
 	.otherwise('/');
 });
 

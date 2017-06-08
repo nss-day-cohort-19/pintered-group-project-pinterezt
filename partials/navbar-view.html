@@ -7,8 +7,8 @@
 			<div class="searchBar nav form-group ">
 	    		<input type="text" class="form-control" placeholder="Search">
 	  		</div>
-	  		<a class="nav navbar-padding" href="#!/explore"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-			<a class="nav navbar-padding" href="#!/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></a>
+	  		<a class="nav navbar-padding search-flickr" id="search" href="#!/explore"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+			<a class="nav navbar-padding"  href="#!/profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></a>
 			<a class="nav navbar-padding" ng-href="#!/" ng-show="!isLoggedIn" ng-controller="AuthCtrl" ng-click="login()">Login</a>
 			<a class="nav navbar-padding" ng-show="isLoggedIn" ng-href="#!/" ng-controller="AuthCtrl" ng-click="logout()">Logout</a>
 		</div>
