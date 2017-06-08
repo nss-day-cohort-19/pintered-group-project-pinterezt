@@ -2,7 +2,9 @@
     <div class="row margin-top">
     <h2 class="text-center">{{imageName}}</h2>
         <div class="col-md-8 text-right">
-            <button ng-click="setItemUrlToPinUrl(currentImage)" data-toggle="modal" data-target="#addPinModal" value="{{currentImage}}"  type="button" class="btn btn-danger large-btn"><span value="{{currentImage}}" class="glyphicon glyphicon-pushpin"></span>Pin</button>
+            <button type="button" class="btn btn-danger back-btn"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true">Back</span></button>
+            <button ng-click="setItemUrlToPinUrl(currentImage)" data-toggle="modal" data-target="#addPinModal" value="{{currentImage}}" ng-click="saveLargeView()" type="button" class="btn btn-danger large-btn"><span value="{{currentImage}}" class="glyphicon glyphicon-pushpin"></span>Pin</button>
+
         </div>
         <div class="col-md-12">
             <img class="img-responsive center-block large-image" ng-src="{{currentImage}}">
