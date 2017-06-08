@@ -4,24 +4,45 @@
     </div>
 
     <div class="container">
-    <div class="row margin-top">
-        <div class="col-md-3 thumbnail thumbnail-home">
-            <div class="thumbnail">
-            <div class="caption">
-                <h3>Add a New Pin</h3>
-                <p><a data-toggle="modal" data-target="#addPinModal" class="btn btn-primary" role="button">Add</a>
-            </div>
-            </div>
-            </div>
-        <div ng-repeat="item in itemList">
+        <!-- <div class="row margin-top">
             <div class="col-md-3 thumbnail thumbnail-home">
-                <button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
-                <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="{{item.url}}"></a>
+                <div class="thumbnail">
+                    <div class="caption newCaption">
+                        <a data-toggle="modal" data-target="#addPinModal" class="btn btn-danger" role="button">Add Pin</a>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="item in itemList">
+                <div class="col-md-3 thumbnail thumbnail-home">
+                    <button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
+                    <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="{{item.url}}"></a>
+                </div>
+            </div>
+        </div> -->
+        <div id="wrapper" class="container-fluid">
+            <div id="columns">
+                <div class="pin">
+                    <div class="caption newCaption">
+                        <a data-toggle="modal" data-target="#addPinModal" class="btn btn-danger" role="button">Add Pin</a>
+                    </div>
+                </div>
+                <div class="pin" ng-repeat="item in itemList | filter: searchData.search"">
+                    <button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" ng-show="isUser" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
+                    <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="{{item.url}}"></a>
+                </div>
             </div>
         </div>
-    </div>
+
+
+
+
+
+
+
     </div>
 </div>
+
+
 
     <!--<div class="row">
         <div class="col-m3">
