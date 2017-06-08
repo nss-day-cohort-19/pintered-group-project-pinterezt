@@ -25,10 +25,15 @@ app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFacto
                 let j = 0;
                 for (let i in boardsListObj) {
                     boardsListObj[i].id = keyHolder[j];
+                    DataFactory.getFBBoardPins(keyHolder[j])
+                    .then((pinObj) => {
+                        boardsListObj[i].pins = pinObj;
+                    });
                     j++;
                 }
-                $scope.itemList = boardsListObj;
 
+                $scope.itemList = boardsListObj;
+                console.log('myObber', $scope.itemList);
             });
     };
 

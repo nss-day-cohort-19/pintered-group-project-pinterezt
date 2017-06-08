@@ -130,7 +130,7 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         });
 
     };
-        const getFBBoardPins = (boardID) => {
+    const getFBBoardPins = (boardID) => {
         let pins = [];
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="boardId"&equalTo="${boardID}"`)
