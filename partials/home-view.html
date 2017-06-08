@@ -9,7 +9,7 @@
     </div>
 </div> -->
 
-<div id="wrapper container margin-top">
+<div id="wrapper" class="container-fluid">
 	<div id="columns">
 		<div class="pin" ng-repeat="item in dataFromFb | filter: searchData.search"">
 			<button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" ng-show="isUser" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
