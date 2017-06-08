@@ -2,7 +2,14 @@
     display: inline-block;
     margin-top: 10px;
 }
+ .navIcon {
+    font-size: 16pt;
+    color: #dedcdb;
+ }
 
+ .navIcon:hover {
+    color: red;
+ }
 .searchBar {
     width: 50%;
     margin-right: 10%;
@@ -11,6 +18,7 @@
 .navbar-header {
     width: 100%;
     margin: 0;
+    height: 55px;
 }
 
 .navbar-brand {
@@ -117,6 +125,7 @@ body {
     column-count: 3;
     column-gap: 15px;
     column-fill: auto;
+    margin-top: 75px;
 }
 
 .pin {

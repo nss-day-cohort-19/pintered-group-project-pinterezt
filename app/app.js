@@ -9,7 +9,7 @@ let isAuth = (AuthFactory) => {
 			if(userExists){
 				resolve(true);
 			} else {
-				resolve(false);
+				reject(false);
 			}
 		});
 	});
