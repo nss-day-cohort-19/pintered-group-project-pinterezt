@@ -8,12 +8,18 @@
         </div>
     </div>
 </div> -->
-
-<div id="wrapper" class="container-fluid">
-	<div id="columns">
-		<div class="pin" ng-repeat="item in imagesFromFlickr">
-			<button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" ng-show="isUser" value="https://farm{{item.farm-id}}.staticflickr.com/{{item.server-id}}/{{item.id}}_{{item.secret}}.jpg"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
-            <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="https://farm{{item.farm-id}}.staticflickr.com/{{item.server-id}}/{{item.id}}_{{item.secret}}.jpg"></a>
+<div class="row">
+	<div class="col-md-3">
+		<ul>
+			
+		</ul>
+	</div>
+	<div id="wrapper" class="col-md-9 container-fluid">
+		<div id="columns">
+			<div class="pin" ng-repeat="item in imagesFromFlickr">
+				<button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" ng-show="isUser" value="https://farm{{item.farm-id}}.staticflickr.com/{{item.server-id}}/{{item.id}}_{{item.secret}}.jpg"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
+	            <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="https://farm{{item.farm-id}}.staticflickr.com/{{item.server-id}}/{{item.id}}_{{item.secret}}.jpg"></a>
+			</div>
 		</div>
 	</div>
 </div>
