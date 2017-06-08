@@ -37,6 +37,18 @@ app.controller('PinCtrl', function($scope, $routeParams, DataFactory, $location,
 
     };
 
+    $scope.getBoardData = () => {
+        DataFactory.getFBBoards(AuthFactory.getUser())
+        .then((boardsObj) => {
+            for (let i in boardsObj) {
+                boardsObj[i].id = i;
+            }
+
+        $scope.boards = boardsObj;
+        });
+    };
+
+    $scope.getBoardData();
     getFBUser();
     getPin();
     deletePin();
