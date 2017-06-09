@@ -42,7 +42,6 @@ app.controller('ProfileCtrl', function($scope, $location, DataFactory, AuthFacto
         $scope.deleteBoard = function(boardId) {
             DataFactory.deleteBoard(boardId)
                 .then(() => {
-                    // $scope.getFBBoards();
                     $route.reload();
                 });
         };

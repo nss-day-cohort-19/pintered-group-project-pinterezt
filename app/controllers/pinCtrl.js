@@ -30,22 +30,19 @@ app.controller('PinCtrl', function($scope, $routeParams, DataFactory, $location,
             console.log('pinId PinCtrl', pinId);
             DataFactory.deletePin(pinId)
                 .then(() => {
-                    // $scope.getFBBoards();
                     $route.reload();
                 });
         };
-
     };
 
     $scope.getBoardData = () => {
         DataFactory.getFBBoards(AuthFactory.getUser())
-        .then((boardsObj) => {
-            for (let i in boardsObj) {
-                boardsObj[i].id = i;
-            }
-
-        $scope.boards = boardsObj;
-        });
+            .then((boardsObj) => {
+                for (let i in boardsObj) {
+                    boardsObj[i].id = i;
+                }
+                $scope.boards = boardsObj;
+            });
     };
 
     $scope.getBoardData();

@@ -19,7 +19,7 @@ app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFa
     };
 
     $scope.getImagesFlickr();
-     $scope.searchImages = function(query) {
+    $scope.searchImages = function(query) {
         console.log('clicked Flickr', query);
         ImageFactory.getSearchedImages(query)
             .then((dataFromFlickr) => {
@@ -44,15 +44,15 @@ app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFa
         }
     });
 
-        $scope.getBoardData = () => {
+    $scope.getBoardData = () => {
         DataFactory.getFBBoards(AuthFactory.getUser())
-        .then((boardsObj) => {
-            for (let i in boardsObj) {
-                boardsObj[i].id = i;
-            }
+            .then((boardsObj) => {
+                for (let i in boardsObj) {
+                    boardsObj[i].id = i;
+                }
 
-        $scope.boards = boardsObj;
-        });
+                $scope.boards = boardsObj;
+            });
     };
 
     $scope.pushPin = () => {
@@ -64,14 +64,14 @@ app.controller('ExplorerCtrl', function($scope, $location, $routeParams, ImageFa
         };
         console.log('pinObj', pinObj);
         DataFactory.addNewPin(pinObj)
-        .then((date) => {
-            console.log('yeah yeah yeah');
-        });
+            .then((date) => {
+                console.log('yeah yeah yeah');
+            });
     };
 
-	$scope.setItemUrlToPinUrl = (url) => {
-		$scope.pinUrl = url;
-	};
+    $scope.setItemUrlToPinUrl = (url) => {
+        $scope.pinUrl = url;
+    };
 
-	$scope.getBoardData();
+    $scope.getBoardData();
 });
