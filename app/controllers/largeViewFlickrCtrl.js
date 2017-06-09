@@ -21,11 +21,30 @@ app.controller('LargeViewFlickr', function($scope, $window, $location, $routePar
     		return result;
     	})
 	);
+	console.log('routeParamsFlickr', $routeParams.id);
+	ImageFactory.searchCurrentImage($routeParams.id)
+	.then((allFlickr)=> {
+		console.log('latestSearchFlickrCurrent', allFlickr);
+		$scope.currentImage = allFlickr;
+		// console.log('latestSearchFlickrCurrent', $scope.currentImage);
+
+
+	})
+	.then(
+		AuthFactory.isAuthenticated()
+    	.then(function(result) {
+    		console.log(result);
+    		$scope.isUser = result;
+    		return result;
+    	})
+	);
+
     $scope.saveLargeView = function() {
     DataFactory.saveLargeImage($routeParams.id)
     .then( (response) => {
     	$location.path("");
     });
+
 
     $('.back-btn').on('click', function() {
         $window.history.back();
