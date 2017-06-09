@@ -6,22 +6,22 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
 
     $(document).on('click', '.btn', (event) => {
         console.log("check this event", event.currentTarget.value);
-            $scope.name = '';
-            pinUrl = event.currentTarget.value;
+        $scope.name = '';
+        pinUrl = event.currentTarget.value;
 
     });
 
     $scope.getBoardData = () => {
         DataFactory.getFBBoards(AuthFactory.getUser())
-        .then((boardsObj) => {
-            for (let i in boardsObj) {
-                boardsObj[i].id = i;
-            }
-        console.log('boards obj at add pin', boardsObj, pinUrl);
-        $scope.boards = boardsObj;
-        $scope.url = pinUrl;
+            .then((boardsObj) => {
+                for (let i in boardsObj) {
+                    boardsObj[i].id = i;
+                }
+                console.log('boards obj at add pin', boardsObj, pinUrl);
+                $scope.boards = boardsObj;
+                $scope.url = pinUrl;
 
-        });
+            });
     };
 
     $scope.pushPin = () => {
@@ -33,10 +33,10 @@ app.controller("AddPinCtrl", function($scope, AuthFactory, $window, $location, D
         };
         console.log('pinObj', pinObj);
         DataFactory.addNewPin(pinObj)
-        .then((date) => {
-            console.log('yeah yeah yeah');
-            $route.reload();
-        });
+            .then((date) => {
+                console.log('yeah yeah yeah');
+                $route.reload();
+            });
     };
 
 });

@@ -2,33 +2,32 @@
 
 app.controller("AuthCtrl", function($scope, AuthFactory, $window, $location, DataFactory) {
 
-	$scope.logout = () => {
-		AuthFactory.logoutUser()
-		.then(function(data) {
-			$window.location.url = '#!/';
-		}, function(error) {
-			console.log("an error occured on logout");
-		});
-	};
+    $scope.logout = () => {
+        AuthFactory.logoutUser()
+            .then(function(data) {
+                $window.location.url = '#!/';
+            }, function(error) {
+                console.log("an error occured on logout");
+            });
+    };
 
-	if(AuthFactory.isAuthenticated()) {
-		$scope.logout();
-	}
+    if (AuthFactory.isAuthenticated()) {
+        $scope.logout();
+    }
 
-	$scope.login = () => {
-		AuthFactory.authWithProvider()
-		.then(function(result) {
-			// console.log('userObj', result);
-			DataFactory.addUser(result.user)
-			.then((success) =>{
-				let successObj = success;
-			});
-			var user = result.user.uid; //what's this for??
-			$location.path("#!/");
+    $scope.login = () => {
+        AuthFactory.authWithProvider()
+            .then(function(result) {
+                DataFactory.addUser(result.user)
+                    .then((success) => {
+                        let successObj = success;
+                    });
+                var user = result.user.uid;
+                $location.path("#!/");
 
-		})
-		.catch(function (error) {
-			console.log("error on login:", error.code, error.message);
-		});
-	};
+            })
+            .catch(function(error) {
+                console.log("error on login:", error.code, error.message);
+            });
+    };
 });

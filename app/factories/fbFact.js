@@ -12,6 +12,7 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
                 });
         });
     };
+
     const getAllPins = () => {
         let pins = [];
         return $q((resolve, reject) => {
@@ -49,19 +50,6 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         });
     };
 
-    const changePin = (pinId, pinnedObj) => {
-        return $q((resolve, reject) => {
-            let newObj = JSON.stringify(pinnedObj);
-            $http.patch(`${FBCreds.databaseURL}/pins/${pinId}.json`, newObj)
-                .then((itemObj) => {
-                    resolve(itemObj);
-                })
-                .catch((error) => {
-                    reject(error);
-                });
-        });
-    };
-
     const getFBBoards = (userID) => {
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/boards.json?orderBy="uid"&equalTo="${userID}"`)
@@ -75,6 +63,7 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
                 });
         });
     };
+
     const getFBUser = (userID) => {
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userID}"`)
@@ -88,18 +77,20 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
                 });
         });
     };
+
     const addBoard = (newBoard) => {
         let boardObj = JSON.stringify(newBoard);
         return $q((resolve, reject) => {
             $http.post(`${FBCreds.databaseURL}/boards.json`, boardObj)
-        .then((obj) => {
-            resolve(obj);
-        })
-        .catch((error) => {
-            reject(error);
-            });
+                .then((obj) => {
+                    resolve(obj);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
     };
+
     const addUser = (userObj) => {
         let user = {
             name: `${userObj.displayName}`,
@@ -107,29 +98,31 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
             url: `${userObj.photoURL}`
         };
         user = JSON.stringify(user);
-       return $q((resolve, reject) => {
-        $http.put(`${FBCreds.databaseURL}/users/${userObj.uid}.json`, user)
-        .then((obj) => {
-            resolve(obj);
-        })
-        .catch((error) => {
-            reject(error);
+        return $q((resolve, reject) => {
+            $http.put(`${FBCreds.databaseURL}/users/${userObj.uid}.json`, user)
+                .then((obj) => {
+                    resolve(obj);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
-       });
     };
+
     const addNewPin = (pinObj) => {
         return $q((resolve, reject) => {
             let hold = JSON.stringify(pinObj);
             $http.post(`${FBCreds.databaseURL}/pins.json`, hold)
-            .then((successObj) => {
-                resolve(successObj);
-            })
-            .catch((error) => {
-                reject(error);
-            });
+                .then((successObj) => {
+                    resolve(successObj);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
 
     };
+
     const getFBBoardPins = (boardID) => {
         let pins = [];
         return $q((resolve, reject) => {
@@ -148,27 +141,28 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
                 });
         });
     };
+
     const getBoard = (boardId) => {
         return $q((resolve, reject) => {
             $http.get(`${FBCreds.databaseURL}/boards/${boardId}.json`)
-            .then((boardObj) => {
-                resolve(boardObj);
-            })
-            .catch((error) => {
-                reject(error);
-            });
+                .then((boardObj) => {
+                    resolve(boardObj);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
     };
 
     const deleteBoard = (boardId) => {
         return $q((resolve, reject) => {
             $http.delete(`${FBCreds.databaseURL}/boards/${boardId}.json`)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch((error) => {
-                reject(error);
-            });
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
     };
 
@@ -176,12 +170,12 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         console.log('pinId', pinId);
         return $q((resolve, reject) => {
             $http.delete(`${FBCreds.databaseURL}/pins/${pinId}.json`)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch((error) => {
-                reject(error);
-            });
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
     };
 
@@ -189,7 +183,6 @@ app.factory("DataFactory", function($q, $http, FBCreds, AuthFactory) {
         saveLargeImage,
         getAllPins,
         getPin,
-        changePin,
         getFBBoards,
         getFBUser,
         addBoard,
