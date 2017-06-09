@@ -84,6 +84,9 @@
 .switch-btn {
   margin-bottom: 2em; }
 
+.margin-container {
+  margin-left: 2em; }
+
 .boardView {
   background-color: #d4d9d8;
   box-shadow: 2px 2px 4px #d4d9d8; }
