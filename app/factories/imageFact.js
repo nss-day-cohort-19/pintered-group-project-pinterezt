@@ -1,7 +1,7 @@
 "use strict";
 
 app.factory("ImageFactory", function($q, $http, FBCreds, AuthFactory) {
-    var flickerAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2a3c22dabde799119ef12641ea2ef046&text=&per_page=50&format=json&nojsoncallback=1&auth_token=72157682813718420-28c021ce6691cb48&api_sig=77fb33623ed3859e413ca183b77020d7";
+    var flickerAPI = "https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=a799da7a2e478d1b5db1286d3000a868&per_page=50&format=json&nojsoncallback=1";
     const getRandomImages = () => {
         return $q((resolve, reject) => {
                 $.getJSON(flickerAPI, {
