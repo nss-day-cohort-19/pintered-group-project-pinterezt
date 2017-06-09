@@ -1,5 +1,5 @@
 "use strict";
-app.controller('LargeViewFlickr', function($scope, $location, $routeParams, DataFactory, AuthFactory, ImageFactory) {
+app.controller('LargeViewFlickr', function($scope, $window, $location, $routeParams, DataFactory, AuthFactory, ImageFactory) {
 	console.log('routeParamsFlickr', $routeParams.id);
 	ImageFactory.getRandomImages()
 	.then((allFlickr)=> {
@@ -26,5 +26,10 @@ app.controller('LargeViewFlickr', function($scope, $location, $routeParams, Data
     .then( (response) => {
     	$location.path("");
     });
+
+    $('.back-btn').on('click', function() {
+        $window.history.back();
+    });
+
   };
 });
