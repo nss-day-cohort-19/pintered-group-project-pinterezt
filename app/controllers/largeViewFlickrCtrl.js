@@ -39,6 +39,13 @@ app.controller('LargeViewFlickr', function($scope, $location, $routeParams, Data
     	})
 	);
 
+    $scope.saveLargeView = function() {
+    DataFactory.saveLargeImage($routeParams.id)
+    .then( (response) => {
+    	$location.path("");
+    });
+
+  };
 	$scope.pushPin = () => {
         let pinObj = {
             name: $scope.pinName,
@@ -58,4 +65,5 @@ app.controller('LargeViewFlickr', function($scope, $location, $routeParams, Data
 	};
 
 	$scope.getBoardData();
+
 });
