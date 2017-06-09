@@ -15,7 +15,6 @@ let isAuth = (AuthFactory) => {
 	});
 };
 
-
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
@@ -42,10 +41,6 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/pin-view.html',
 		controller: 'PinCtrl'
 	})
-	// .when('/pins/:id', {
-	// 	templateUrl: 'partials/pin-view.html',
-	// 	controller: 'ProfileCtrl'
-	// })
 	.when('/pindetails', {
 		templateUrl: 'partials/large-view.html',
 		controller: 'LargeViewCtrl'

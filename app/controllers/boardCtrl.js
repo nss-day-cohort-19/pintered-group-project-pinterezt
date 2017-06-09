@@ -4,36 +4,33 @@ app.controller('BoardCtrl', function($scope, $location, $routeParams, DataFactor
 
     let getBoardName = () => {
         DataFactory.getBoard($routeParams.id)
-        .then((boardObj) => {
-            console.log('check this out', boardObj);
-            $scope.boardName = boardObj.data.name;
+            .then((boardObj) => {
+                console.log('check this out', boardObj);
+                $scope.boardName = boardObj.data.name;
 
-        });
+            });
     };
 
     let getFBBoardPins = () => {
         console.log('route id', $routeParams.id);
         DataFactory.getFBBoardPins($routeParams.id)
-        .then((pinsListObj) => {
-            $scope.itemList = pinsListObj;
-            // for (let i in $scope.itemList) {
-            //     $scope.itemList.id = i.pinId;
-            // }
-        });
+            .then((pinsListObj) => {
+                $scope.itemList = pinsListObj;
+            });
     };
 
     getFBBoardPins();
     getBoardName();
 
-        $scope.getBoardData = () => {
+    $scope.getBoardData = () => {
         DataFactory.getFBBoards(AuthFactory.getUser())
-        .then((boardsObj) => {
-            for (let i in boardsObj) {
-                boardsObj[i].id = i;
-            }
-            
-        $scope.boards = boardsObj;
-        });
+            .then((boardsObj) => {
+                for (let i in boardsObj) {
+                    boardsObj[i].id = i;
+                }
+
+                $scope.boards = boardsObj;
+            });
     };
 
     $scope.pushPin = () => {
@@ -45,14 +42,14 @@ app.controller('BoardCtrl', function($scope, $location, $routeParams, DataFactor
         };
         console.log('pinObj', pinObj);
         DataFactory.addNewPin(pinObj)
-        .then((date) => {
-            console.log('yeah yeah yeah');
-        });
+            .then((date) => {
+                console.log('yeah yeah yeah');
+            });
     };
 
-	$scope.setItemUrlToPinUrl = (url) => {
-		$scope.pinUrl = url;
-	};
+    $scope.setItemUrlToPinUrl = (url) => {
+        $scope.pinUrl = url;
+    };
 
-	$scope.getBoardData();
+    $scope.getBoardData();
 });
