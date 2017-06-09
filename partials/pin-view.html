@@ -1,16 +1,16 @@
-<div class="container margin-top">
+<div class="container">
         <h1 class="col-md-offset-3 profile-name">{{userName}}</h1>
         <img class="col-md-offset-9 text-right profile-img img-circle" src="{{userImg}}" alt="{{userName}}">
 
-    <div class="col-md-offset-4 switch-btn">
+    <div class="col-md-4 switch-btn">
         <a ng-href="#!/profile">
             <button type="button" class="btn btn-default">Boards</button>
         </a>
         <a ng-href="#!/pinview">
-            <button type="button" class="btn btn-default">Pins</button>
+            <button type="button" class="btn btn-danger">Pins</button>
         </a>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
@@ -22,8 +22,8 @@
         <div ng-repeat="item in itemList">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <!--<img src="{{item.url}}" alt="{{item.name}}">-->
-                    <div class="caption">
+                    <img src="{{item.url}}" alt="{{item.name}}">
+                        <div class="caption">
                         <h3>{{item.name}}</h3>
                         <a ng-href="#!/boardpins/{{item.Id}}"><img ng-src="{{item.url}}"></a>
                         <p><a ng-click="deletePin(item.id)" class="btn btn-default" role="button">Delete</a></p>
@@ -31,5 +31,51 @@
                 </div>
             </div>
         </div>
+    </div>  -->
+
+    <div id="wrapper" class="container-fluid">
+        <div id="columns">
+            <div class="pin">
+                <div class="caption newCaption">
+                    <a class="btn btn-danger" role="button" data-toggle="modal" data-target="#addPinModal">Add Pin</a>
+                </div>
+            </div>
+            <div class="pin" ng-repeat="item in itemList | filter: searchData.search"">
+                <button  data-toggle="modal" data-target="#addPinModal" type="button" class="btn btn-danger home-btn" ng-show="isUser" value="{{item.url}}"><span class="glyphicon glyphicon-pushpin" value="{{item.url}}"></span></button>
+                <a ng-href="#!/largeView/{{item.id}}"><img class="home-img" ng-src="{{item.url}}"></a>
+            </div>
+        </div>
     </div>
+
+
+
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addPinModal" role="dialog">
+    <div class="modal-dialog">
+
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Pin</h4>
+        </div>
+        <div class="modal-body">
+          <p>Title:</p><input type="text" ng-model="pinName">
+          <p>URL:</p><input type="text" ng-model="pinUrl">
+          <div class="form-group">
+            <label for="sel1">Save to Which Board:</label>
+            <select ng-model="board.id" class="form-control boardSelect" id="sel1">
+              <option value="{{board.id}}" ng-repeat="board in boards">{{board.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="pushPin()">Add</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
