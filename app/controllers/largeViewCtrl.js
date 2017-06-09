@@ -1,5 +1,5 @@
 "use strict";
-app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory, ImageFactory) {
+app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFactory, AuthFactory, ImageFactory, $window) {
 	// console.log('routeParams', $routeParams.id);
 	DataFactory.getAllPins()
 	.then((allPins)=> {
@@ -55,6 +55,10 @@ app.controller('LargeViewCtrl', function($scope, $location, $routeParams, DataFa
 	$scope.setItemUrlToPinUrl = (url) => {
 		$scope.pinUrl = url;
 	};
+
+	$('.back-btn').on('click', function() {
+        $window.history.back();
+    });
 
 	$scope.getBoardData();
 });
